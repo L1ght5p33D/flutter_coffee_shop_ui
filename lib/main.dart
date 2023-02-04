@@ -1,11 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:coffee_shop_ui/coffee_home.dart';
+
+class CustomError extends StatelessWidget {
+  CustomError({Key? key, this.errorDetails}) : super(key: key);
+  FlutterErrorDetails? errorDetails;
+  @override
+  Widget build(BuildContext context) {
+    return ListView(children: [
+      Container(
+          color: Colors.tealAccent,
+          child: Center(
+              child: Text(errorDetails.toString(),
+                  style: TextStyle(color: Colors.black))))
+    ]);
+  }
 
 void main() {
-  runApp(const MyApp());
+  runApp(const CoffeeShopApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class CoffeeShopApp extends StatelessWidget {
+  const CoffeeShopApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,40 +29,15 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+        builder: (BuildContext context, Widget? widget) {
+          ErrorWidget.builder = (FlutterErrorDetails errorDetails) {
+            return CustomError(errorDetails: errorDetails);
+          };
+          return widget!;
+        },
+      home: const CoffeeShopHome()
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
 
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-
-          ],
-        ),
-      ), 
-    );
-  }
-}
