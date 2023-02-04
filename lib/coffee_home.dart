@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:coffee_shop_ui/coffee_type_LV.dart';
 
 List coffee_types_list = ["Cappuccino","Espresso", "Latte", "Flat White"];
+List coffee_types_data_names = ["cappuccino", "espresso", "latte", "flat_white"];
 
 class CoffeeShopHome extends StatefulWidget {
   const CoffeeShopHome({super.key});
@@ -17,7 +19,7 @@ int coffee_type_chosen_idx=0;
   @override
   Widget build(BuildContext context) {
 
-    var ss = MediaQuery.of(context).size;
+    Size ss = MediaQuery.of(context).size;
     return Scaffold(
       body: SafeArea(child:
         Padding(
@@ -92,7 +94,7 @@ int coffee_type_chosen_idx=0;
                 ])
             ),
           Container(
-              height: ss.width * .45,
+              height: ss.width * .25,
               child:
             ListView.builder(
                 scrollDirection: Axis.horizontal,
@@ -138,7 +140,9 @@ int coffee_type_chosen_idx=0;
                       Container()
 
                       ]));
-            }))
+            })),
+
+            Coffee_Type_LV(coffee_type: coffee_types_data_names[coffee_type_chosen_idx],)
 
 
 
