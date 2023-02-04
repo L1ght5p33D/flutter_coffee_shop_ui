@@ -2,6 +2,7 @@ Map coffee_types_data = {
   "cappuccino": [{
     "image_data": "assets/images/coffee_img1.png",
     "rating": "4.7",
+    "total_ratings": "3678",
     "main_name": "Cappuccino",
     "secondary_text": "With Steamed Milk",
     "price": "3.44"
@@ -9,6 +10,7 @@ Map coffee_types_data = {
     {
       "image_data": "assets/images/coffee_img1.png",
       "rating": "4.8",
+      "total_ratings": "3678",
       "main_name": "Cappuccino",
       "secondary_text": "With Oat Milk",
       "price": "3.88"
@@ -16,6 +18,7 @@ Map coffee_types_data = {
     {
       "image_data": "assets/images/coffee_img1.png",
       "rating": "4.6",
+      "total_ratings": "3678",
       "main_name": "Cappuccino",
       "secondary_text": "With Chocolate",
       "price": "3.44"
@@ -23,6 +26,7 @@ Map coffee_types_data = {
     {
       "image_data": "assets/images/coffee_img1.png",
       "rating": "4.8",
+      "total_ratings": "3678",
       "main_name": "Cappuccino",
       "secondary_text": "With Soy Milk",
       "price": "3.88"
@@ -31,6 +35,7 @@ Map coffee_types_data = {
   "espresso":[{
     "image_data": "assets/images/coffee_img1.png",
     "rating": "4.9",
+    "total_ratings": "3678",
     "main_name": "Espresso",
     "secondary_text": "Single",
     "price": "3.33"
@@ -38,6 +43,7 @@ Map coffee_types_data = {
     {
       "image_data": "assets/images/coffee_img1.png",
       "rating": "4.8",
+      "total_ratings": "3678",
       "main_name": "Espresso",
       "secondary_text": "Double",
       "price": "4.33"
@@ -45,6 +51,7 @@ Map coffee_types_data = {
     {
       "image_data": "assets/images/coffee_img1.png",
       "rating": "4.9",
+      "total_ratings": "3678",
       "main_name": "Espresso",
       "secondary_text": "Triple",
       "price": "4.88"
@@ -52,6 +59,7 @@ Map coffee_types_data = {
   "latte":[ {
     "image_data": "assets/images/coffee_img1.png",
     "rating": "4.6",
+    "total_ratings": "3678",
     "main_name": "Latte",
     "secondary_text": "With Steamed Milk",
     "price": "3.25"
@@ -59,6 +67,7 @@ Map coffee_types_data = {
     {
       "image_data": "assets/images/coffee_img1.png",
       "rating": "4.7",
+      "total_ratings": "3678",
       "main_name": "Latte",
       "secondary_text": "With Oat Milk",
       "price": "3.88"
@@ -66,6 +75,7 @@ Map coffee_types_data = {
     {
       "image_data": "assets/images/coffee_img1.png",
       "rating": "4.8",
+      "total_ratings": "3678",
       "main_name": "Latte",
       "secondary_text": "With Chocolate",
       "price": "3.25"
@@ -73,6 +83,7 @@ Map coffee_types_data = {
     {
       "image_data": "assets/images/coffee_img1.png",
       "rating": "4.9",
+      "total_ratings": "3678",
       "main_name": "Latte",
       "secondary_text": "With Soy Milk",
       "price": "3.88"
@@ -81,6 +92,7 @@ Map coffee_types_data = {
   "flat_white": [{
     "image_data": "assets/images/coffee_img1.png",
     "rating": "4.7",
+    "total_ratings": "3678",
     "main_name": "Flat White",
     "secondary_text": "With Steamed Milk",
     "price": "3.88"
@@ -88,6 +100,7 @@ Map coffee_types_data = {
     {
       "image_data": "assets/images/coffee_img1.png",
       "rating": "4.9",
+      "total_ratings": "3678",
       "main_name": "Flat White",
       "secondary_text": "With Chocolate",
       "price": "3.88"
@@ -95,6 +108,7 @@ Map coffee_types_data = {
     {
       "image_data": "assets/images/coffee_img1.png",
       "rating": "4.8",
+      "total_ratings": "3678",
       "main_name": "Flat White",
       "secondary_text": "With Oat Milk",
       "price": "4.25"
@@ -102,6 +116,7 @@ Map coffee_types_data = {
     {
       "image_data": "assets/images/coffee_img1.png",
       "rating": "4.9",
+      "total_ratings": "3678",
       "main_name": "Flat White",
       "secondary_text": "With Soy Milk",
       "price": "4.25"
