@@ -15,7 +15,7 @@ class CoffeeShopHome extends StatefulWidget {
 }
 
 class _CoffeeShopHomeState extends State<CoffeeShopHome> {
-
+int _bnb_selected_idx = 0;
   ScrollController _scrollController = ScrollController();
 int coffee_type_chosen_idx=0;
 
@@ -25,6 +25,10 @@ int coffee_type_chosen_idx=0;
     Size ss = MediaQuery.of(context).size;
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _bnb_selected_idx, //New
+        onTap: (index){setState(() {
+          _bnb_selected_idx = index;
+        });},
         items: [
           BottomNavigationBarItem(
               label: "",
@@ -35,11 +39,13 @@ int coffee_type_chosen_idx=0;
           BottomNavigationBarItem(
               label:"",
               icon:
-          Icon(Icons.favorite )),
+          Icon(Icons.favorite ),
+          activeIcon: Icon(Icons.favorite, color: Colors.deepOrange,)),
           BottomNavigationBarItem(
               label:"",
               icon:
-          Icon(Icons.notifications_rounded ))
+          Icon(Icons.notifications_rounded ),
+              activeIcon: Icon(Icons.notifications_rounded, color: Colors.deepOrange,))
         ],
       ),
       body: SafeArea(child:
