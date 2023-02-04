@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:coffee_shop_ui/coffee_type_LV.dart';
 
 List coffee_types_list = ["Cappuccino","Espresso", "Latte", "Flat White"];
@@ -14,6 +16,7 @@ class CoffeeShopHome extends StatefulWidget {
 
 class _CoffeeShopHomeState extends State<CoffeeShopHome> {
 
+  ScrollController _scrollController = ScrollController();
 int coffee_type_chosen_idx=0;
 
   @override
@@ -114,8 +117,10 @@ int coffee_type_chosen_idx=0;
           Container(
               height: ss.width * .25,
               child:
+                  Stack(children:[
             ListView.builder(
                 scrollDirection: Axis.horizontal,
+                controller: _scrollController,
                 itemCount: coffee_types_list.length,
                 itemBuilder: (context, coffee_type_idx){
                   Color itemtextcolor = Colors.grey;
@@ -126,39 +131,87 @@ int coffee_type_chosen_idx=0;
                   }
                   return
                   Container(
-                      width: ss.width * .25,
+                      width: ss.width * .27,
                       height: ss.width * .15,
                       child:Stack(
                           // mainAxisSize: MainAxisSize.min,
                           children:[
                     InkWell(
                         onTap:(){
+                          if (coffee_type_idx ==0 ) {
+                            _scrollController.animateTo(0.0,
+                                duration: Duration(milliseconds: 500),
+                                curve: Curves.easeOut);
+                          }
+                          if (coffee_type_idx ==1 ) {
+                            _scrollController.animateTo(ss.width*.04,
+                                duration: Duration(milliseconds: 500),
+                                curve: Curves.easeOut);
+                          }
+                          if (coffee_type_idx ==2 ){
+                            _scrollController.animateTo(ss.width*.11,
+                                duration: Duration(milliseconds: 500),
+                                curve: Curves.easeOut);
+
+                          }
+                          if (coffee_type_idx ==3 ){
+                            _scrollController.animateTo(ss.width*.60,
+                                duration: Duration(milliseconds: 500),
+                                curve: Curves.easeOut);
+
+                          }
                           setState(() {
                             coffee_type_chosen_idx = coffee_type_idx;
                           });
+
                         },
                         child:
                     Container(
-                      width: ss.width * .25,
+                      width: ss.width * .27,
                       height:ss.width * .15,
                       child:Center(child:
                       Text(coffee_types_list[coffee_type_idx],
                             style: TextStyle(color: itemtextcolor),
                       )))
                     ),
-                      item_is_chosen ?
-                      Container(
-                      width: ss.width * .25,
-                  height:ss.width * .15,
-                  padding:EdgeInsets.only(top:ss.width*.08),
-                  child:Center(child:
-                          Text("•",
-                          style: TextStyle(fontSize: ss.width*.1,
-                                            color: itemtextcolor),))):
-                      Container()
+
+                            //     item_is_chosen ?
+                  //     Container(
+                  //     width: ss.width * .25,
+                  // height:ss.width * .15,
+                  // padding:EdgeInsets.only(top:ss.width*.08),
+                  // child:Center(child:
+                  //         Text("•",
+                  //         style: TextStyle(fontSize: ss.width*.1,
+                  //                           color: itemtextcolor),))):
+                  //     Container()
 
                       ]));
-            })),
+            }),
+                    Padding(
+                      padding:EdgeInsets.only(left:ss.width*.15,
+                                              top:ss.width*.13),
+                    child:
+                    AnimatedSmoothIndicator(
+                      activeIndex: coffee_type_chosen_idx,
+                      count:  4,
+                      axisDirection: Axis.horizontal,
+                      effect:  SlideEffect(
+                        spacing:  ss.width*.19,
+                          radius:  4.0,
+                          dotWidth:  5.0,
+                          dotHeight:  5.0,
+                          paintStyle:  PaintingStyle.stroke,
+                          strokeWidth:  1.5,
+                          dotColor:  Colors.transparent,
+                          activeDotColor:  Colors.deepOrange
+                      ),
+                    )),
+
+          ])),
+
+
+
 
             Coffee_Type_LV(coffee_type: coffee_types_data_names[coffee_type_chosen_idx],),
             Padding(padding: EdgeInsets.all(ss.width*.03),
