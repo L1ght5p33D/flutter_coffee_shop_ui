@@ -37,6 +37,8 @@ class _Coffee_Detail_ViewState extends State<Coffee_Detail_View> {
   bool md_active = false;
   bool lg_active = false;
 
+  bool is_favorite = false;
+
   @override
   Widget build(BuildContext context) {
     Size ss = MediaQuery.of(context).size;
@@ -65,7 +67,7 @@ class _Coffee_Detail_ViewState extends State<Coffee_Detail_View> {
                       child: Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(ss.width * .06),
-                          color: Colors.grey[900],
+                          color: Colors.blueGrey[900],
                         ),
                         width: ss.width * .12,
                         height: ss.width * .12,
@@ -86,17 +88,21 @@ class _Coffee_Detail_ViewState extends State<Coffee_Detail_View> {
                      child: Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(ss.width * .06),
-                          color: Colors.grey[900],
+                          color: Colors.blueGrey[800],
                         ),
                         width: ss.width * .12,
                         height: ss.width * .12,
                         child:
                         IconButton(
-                          onPressed: (){},
+                          onPressed: (){
+                            setState(() {
+                              is_favorite = !is_favorite;
+                            });
+                          },
                           padding: EdgeInsets.all(ss.width*.02),
                           splashRadius: ss.width * .2,
                           icon: Icon(Icons.favorite,
-                            color: Colors.red[800],
+                            color: is_favorite?Colors.red[800]:Colors.grey[700],
                             size: ss.width*.06,
                           ),
 
@@ -298,8 +304,35 @@ class _Coffee_Detail_ViewState extends State<Coffee_Detail_View> {
                         child:Center(child:Text("L"))
                     ))
 
-            ],)
+            ],),
           ),
+          Padding(padding: EdgeInsets.all(ss.width*.02),),
+          Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children:[
+            Container(width:ss.width*.2,
+                      height:ss.width*.17,
+                child:Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children:[
+                  Text("Price",
+                  style: TextStyle(fontSize: ss.width*.034,
+                                    fontWeight: FontWeight.w300)),
+            Text("\$" + widget.ci_data!["price"]),
+            ])),
+
+            Container(
+                height: ss.width*.17,
+                width:ss.width*.7,
+                decoration: BoxDecoration(
+                    color: Colors.deepOrange,
+                    borderRadius: BorderRadius.circular(ss.width*.06),
+                ),
+                child:Center(child:Text("Buy Now"))
+            )
+
+          ]),
+          Padding(padding: EdgeInsets.all(ss.width*.02),),
         ],)
     )));
   }
