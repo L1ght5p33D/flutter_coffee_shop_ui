@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:ui';
+import 'package:flutter_expandable_text/flutter_expandable_text.dart';
+
 
 Route createRoute(Map ci_data) {
   return PageRouteBuilder(
@@ -191,7 +193,44 @@ class _Coffee_Detail_ViewState extends State<Coffee_Detail_View> {
 
               )],)
             ],)
-          )
+          ),
+          Padding(
+          padding: EdgeInsets.all(ss.width*.02),
+              child:
+              Text("Description", style: TextStyle(
+              fontSize: ss.width*.04,
+              fontWeight: FontWeight.w300,
+              color: Colors.white
+          ),)
+          ),
+        Padding(
+          padding: EdgeInsets.all(ss.width*.02),
+          child: ExpandableText(
+            widget.ci_data!["long_description"],
+            style: TextStyle(
+              fontSize: ss.width*.03,
+              color: Colors.white
+            ),
+            trimType: TrimType.lines,
+            trim: 3,
+            readLessText: 'Less',
+            readMoreText: 'Tap for more',
+            linkTextStyle:  TextStyle(
+                color: Colors.deepOrange,
+                fontSize: ss.width*.03,
+                fontWeight: FontWeight.bold),
+            onLinkPressed: (expanded) {},
+          )),
+          Padding(
+              padding: EdgeInsets.all(ss.width*.02),
+              child:
+              Text("Size", style: TextStyle(
+                  fontSize: ss.width*.04,
+                  fontWeight: FontWeight.w300,
+                  color: Colors.white
+              ),)
+          ),
+
         ],)
     )));
   }
