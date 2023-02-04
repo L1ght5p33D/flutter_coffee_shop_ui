@@ -39,9 +39,24 @@ class _Coffee_Detail_ViewState extends State<Coffee_Detail_View> {
 
   bool is_favorite = false;
 
+  String str_adjusted_price = "";
+  double size_adjusted_price = 0.0;
+
   @override
   Widget build(BuildContext context) {
     Size ss = MediaQuery.of(context).size;
+
+    size_adjusted_price = double.parse(widget.ci_data!["price"]);
+    if (md_active){
+      size_adjusted_price = size_adjusted_price + 1.00;
+    }
+
+    if (lg_active){
+      size_adjusted_price = size_adjusted_price + 1.50;
+    }
+
+    str_adjusted_price = size_adjusted_price.toStringAsFixed(2);
+
     return Scaffold(body:SafeArea(child:
     Container(
         height:ss.height ,
@@ -318,7 +333,7 @@ class _Coffee_Detail_ViewState extends State<Coffee_Detail_View> {
                   Text("Price",
                   style: TextStyle(fontSize: ss.width*.034,
                                     fontWeight: FontWeight.w300)),
-            Text("\$" + widget.ci_data!["price"]),
+            Text("\$" + str_adjusted_price ),
             ])),
 
             Container(
