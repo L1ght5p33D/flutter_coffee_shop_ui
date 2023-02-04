@@ -21,6 +21,24 @@ int coffee_type_chosen_idx=0;
 
     Size ss = MediaQuery.of(context).size;
     return Scaffold(
+      bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(
+              label: "",
+              icon:
+          Icon(Icons.home),
+          activeIcon: Icon(Icons.home, color: Colors.deepOrange,)
+          ),
+          BottomNavigationBarItem(
+              label:"",
+              icon:
+          Icon(Icons.favorite )),
+          BottomNavigationBarItem(
+              label:"",
+              icon:
+          Icon(Icons.notifications_rounded ))
+        ],
+      ),
       body: SafeArea(child:
         Padding(
             padding: EdgeInsets.all(ss.width*.03),
@@ -142,13 +160,139 @@ int coffee_type_chosen_idx=0;
                       ]));
             })),
 
-            Coffee_Type_LV(coffee_type: coffee_types_data_names[coffee_type_chosen_idx],)
+            Coffee_Type_LV(coffee_type: coffee_types_data_names[coffee_type_chosen_idx],),
+            Padding(padding: EdgeInsets.all(ss.width*.03),
+                child:
+            Text("Special For you")),
+
+
+              Padding(
+                  padding: EdgeInsets.all(ss.width*.02),
+                  child:Container(
+
+                      height: ss.height * .2,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(ss.width*.05),
+                        color: Colors.black26,
+                      ),
+                      child: Row(children: [
+                        Container(
+                            height: ss.height * .2,
+                            width: ss.width * .24,
+                            child:ClipRRect(
+                                borderRadius:
+                                BorderRadius.circular(
+                                    ss.width * .04),
+                                child:  Image.asset("assets/images/coffee_img1.png",
+                                    height: ss.height * .2,
+                                    width: ss.width * .24,
+                                    fit:BoxFit.fill
+                                ))),
+                        Container(
+                            height: ss.height * .2,
+                            child: Column(
+                                children: [
+                                  Row(
+                                    children: [
+                                      Container(
+                                          // height: ss.width * .3,
+                                          child: Row(
+                                            mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Container(
+                                                  width: ss.width * .5,
+                                                  padding: EdgeInsets.only(left:ss.width*.02, top:ss.width*.02),
+                                                  child: Column(
+                                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                                      children: [
+                                                        Text(
+                                                          "New Coffee Beans are a Must Try!",
+                                                          style: TextStyle(fontSize: ss.width * .045,
+                                                              fontWeight: FontWeight.w400)   ,
+                                                          // overflow:
+                                                          // TextOverflow.wrap,
+                                                        ),
+                                                        Text(
+                                                            "New beans in stock",
+                                                            style: TextStyle(fontSize: ss.width * .04,
+                                                                fontWeight: FontWeight.w300)
+                                                        ),
+                                                      ])),
+                                              Container(
+                                                  padding: EdgeInsets.only(top:ss.width*.2),
+                                                  // width: ss.width * .15,
+                                                  child: Column(children: [
+                                                    Text("\$" +
+                                                       "9.99",
+                                                      style: TextStyle(
+                                                          fontSize: ss.width * .03,
+                                                          fontWeight: FontWeight.w600),
+                                                    ),
+
+                                                  ]))
+                                            ],)
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Container(
+                                          width: ss.width * .6,
+                                          child: Column(
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              children: [
+                                                Padding(
+                                                    padding:EdgeInsets.all(ss.width*.01),
+                                                    child:RatingWidget(
+                                                        num_stars:
+                                                       5)),
+                                                // Padding(
+                                                //     padding:EdgeInsets.all(ss.width*.01),
+                                                //     child:TimesWidget(
+                                                //         times_list:
+                                                //         widget.pdest["activities"]
+                                                //         [activities_idx]
+                                                //         ["times_list"]))
+                                              ])),
+                                    ],
+                                  )
+                                ]))
+                      ])))
+
+
+
+
+
 
 
 
           ],
         ))),
       ),
+    );
+  }
+}
+
+class RatingWidget extends StatelessWidget {
+  RatingWidget({Key? key, this.num_stars: 0}) : super(key: key);
+  int num_stars;
+
+  @override
+  Widget build(BuildContext context) {
+
+    var ss = MediaQuery.of(context).size;
+    List<Widget> build_stars = [];
+
+    int bsidx = 0;
+    while (bsidx < num_stars) {
+      build_stars.add(Container(child: Icon(Icons.star, color:Colors.yellow[700], size:ss.width * .05)));
+      bsidx += 1;
+    }
+    return Row(
+      children: build_stars,
     );
   }
 }
