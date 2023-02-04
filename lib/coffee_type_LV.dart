@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:coffee_shop_ui/coffee_detail_page.dart';
 import 'package:coffee_shop_ui/coffee_types_data.dart';
+
 
 class Coffee_Type_LV extends StatefulWidget {
   Coffee_Type_LV({Key? key, this.coffee_type: "cappuccino"}) : super(key: key);
@@ -25,6 +27,12 @@ class _Coffee_Type_LVState extends State<Coffee_Type_LV> {
         return
           Padding(
             padding: EdgeInsets.symmetric(horizontal: ss.width*.03),
+          child:
+              GestureDetector(
+                onTap: (){
+                  Navigator.of(context).push(createRoute(
+                      coffee_types_data[widget.coffee_type][coffee_lv_idx]));
+                  },
           child:
           Material(
             shadowColor: Colors.black,
@@ -128,7 +136,7 @@ class _Coffee_Type_LVState extends State<Coffee_Type_LV> {
 
             ],)
 
-          ))   );
+          )))   );
 
           }
       )
