@@ -98,7 +98,7 @@ int coffee_type_chosen_idx=0;
                   Padding(padding: EdgeInsets.all(ss.width*.02),),
 
                 Container(
-                    padding: EdgeInsets.all(ss.width*.02),
+                    padding: EdgeInsets.fromLTRB(ss.width*.02, 0.0, ss.width*.02, 0.0),
                     width: ss.width*.8,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(ss.width * .08),
@@ -181,17 +181,6 @@ int coffee_type_chosen_idx=0;
                       )))
                     ),
 
-                            //     item_is_chosen ?
-                  //     Container(
-                  //     width: ss.width * .25,
-                  // height:ss.width * .15,
-                  // padding:EdgeInsets.only(top:ss.width*.08),
-                  // child:Center(child:
-                  //         Text("•",
-                  //         style: TextStyle(fontSize: ss.width*.1,
-                  //                           color: itemtextcolor),))):
-                  //     Container()
-
                       ]));
             }),
                     Padding(
@@ -222,7 +211,8 @@ int coffee_type_chosen_idx=0;
             Coffee_Type_LV(coffee_type: coffee_types_data_names[coffee_type_chosen_idx],),
             Padding(padding: EdgeInsets.all(ss.width*.03),
                 child:
-            Text("Special For you")),
+
+                Text("Special For you")),
 
 
               Padding(
@@ -281,15 +271,19 @@ int coffee_type_chosen_idx=0;
                                               Container(
                                                   padding: EdgeInsets.only(top:ss.width*.2),
                                                   // width: ss.width * .15,
-                                                  child: Column(children: [
-                                                    Text("\$" +
-                                                       "9.99",
-                                                      style: TextStyle(
-                                                          fontSize: ss.width * .03,
-                                                          fontWeight: FontWeight.w600),
+                                                  child: Row(children:[
+                                                    Icon(Icons.monetization_on_outlined,
+                                                      size: ss.width*.04,
+                                                      color: Colors.grey[300],
                                                     ),
-
-                                                  ]))
+                                                      Text(
+                                                         " 9.99",
+                                                        style: TextStyle(
+                                                            fontSize: ss.width * .03,
+                                                            fontWeight: FontWeight.w600),
+                                                      ),
+                                                  ])
+                                              )
                                             ],)
                                       ),
                                     ],
@@ -308,26 +302,11 @@ int coffee_type_chosen_idx=0;
                                                     child:RatingWidget(
                                                         num_stars:
                                                        5)),
-                                                // Padding(
-                                                //     padding:EdgeInsets.all(ss.width*.01),
-                                                //     child:TimesWidget(
-                                                //         times_list:
-                                                //         widget.pdest["activities"]
-                                                //         [activities_idx]
-                                                //         ["times_list"]))
                                               ])),
                                     ],
                                   )
                                 ]))
                       ])))
-
-
-
-
-
-
-
-
           ],
         ))),
       ),

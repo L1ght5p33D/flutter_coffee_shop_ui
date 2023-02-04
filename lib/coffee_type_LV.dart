@@ -96,22 +96,25 @@ class _Coffee_Type_LVState extends State<Coffee_Type_LV> {
                       ),
                       Stack(children:[
                         Padding(
-                            padding:EdgeInsets.only(top:ss.width*.02, left:ss.width*.02),
+                            padding:EdgeInsets.only(top:ss.width*.06, left:ss.width*.02),
                             child:
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Icon(Icons.monetization_on_outlined,
-                                size: ss.width*.03,
-                            color: Colors.grey[500],
+                                size: ss.width*.04,
+                            color: Colors.grey[300],
                           ),
-                          Text("  "+coffee_types_data[widget.coffee_type][coffee_lv_idx]["price"]),
+                          Text(" "+coffee_types_data[widget.coffee_type][coffee_lv_idx]["price"],
+                            style: TextStyle(
+                                fontSize: ss.width * .03,
+                                fontWeight: FontWeight.w600),),
                         ],)),
                         Row(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               Padding(
-                                padding:EdgeInsets.only(top:ss.width*.02, right: ss.width*.02),
+                                padding:EdgeInsets.only(top:ss.width*.06, right: ss.width*.02),
                               child:
                               InkWell(
                                 onTap:(){print("tap");},
