@@ -32,6 +32,11 @@ class Coffee_Detail_View extends StatefulWidget {
 }
 
 class _Coffee_Detail_ViewState extends State<Coffee_Detail_View> {
+
+  bool sm_active = true;
+  bool md_active = false;
+  bool lg_active = false;
+
   @override
   Widget build(BuildContext context) {
     Size ss = MediaQuery.of(context).size;
@@ -231,6 +236,70 @@ class _Coffee_Detail_ViewState extends State<Coffee_Detail_View> {
               ),)
           ),
 
+          Padding(
+              padding: EdgeInsets.all(ss.width*.02),
+              child:
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+
+              GestureDetector(
+            onTap: (){setState(() {
+              sm_active = true;
+              md_active = false;
+              lg_active = false;
+            });},
+              child:Container(                        height: ss.width*.1,
+                  width:ss.width*.3,
+              decoration: BoxDecoration(
+                color: sm_active? Colors.grey[900]: Colors.blueGrey[800],
+                borderRadius: BorderRadius.circular(ss.width*.04),
+                border: sm_active? Border.all(color: Colors.deepOrange,
+                    width: 1.0): null
+
+              ),
+              child:Center(child:Text("S"))
+              )),
+
+                GestureDetector(
+                    onTap: (){setState(() {
+                      sm_active = false;
+                      md_active = true;
+                      lg_active = false;
+                    });},
+                    child:Container(                        height: ss.width*.1,
+                        width:ss.width*.3,
+                        decoration: BoxDecoration(
+                            color: md_active? Colors.grey[900]: Colors.blueGrey[800],
+                            borderRadius: BorderRadius.circular(ss.width*.04),
+                            border: md_active? Border.all(color: Colors.deepOrange,
+                                width: 1.0): null
+
+                        ),
+                        child:Center(child:Text("M"))
+                    )),
+
+                GestureDetector(
+                    onTap: (){setState(() {
+                      sm_active = false;
+                      md_active = false;
+                      lg_active = true;
+                    });},
+                    child:Container(
+                        height: ss.width*.1,
+                        width:ss.width*.3,
+                        decoration: BoxDecoration(
+                            color: lg_active? Colors.grey[900]: Colors.blueGrey[800],
+                            borderRadius: BorderRadius.circular(ss.width*.04),
+                            border: lg_active? Border.all(color: Colors.deepOrange,
+                                width: 1.0): null
+
+                        ),
+                        child:Center(child:Text("L"))
+                    ))
+
+            ],)
+          ),
         ],)
     )));
   }
