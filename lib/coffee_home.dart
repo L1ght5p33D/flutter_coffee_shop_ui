@@ -19,11 +19,11 @@ int coffee_type_chosen_idx=0;
 
     var ss = MediaQuery.of(context).size;
     return Scaffold(
-      body: SafeArea(
-        child:Padding(
+      body: SafeArea(child:
+        Padding(
             padding: EdgeInsets.all(ss.width*.03),
             child:Container(
-            height: ss.height,
+            height: ss.height - ss.width * .06,
             child: ListView(
           children: <Widget>[
             Container(
@@ -32,19 +32,25 @@ int coffee_type_chosen_idx=0;
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                ElevatedButton(
-                  style: ButtonStyle(
-                    overlayColor: MaterialStateProperty.all(Colors.white),
-                    backgroundColor: MaterialStateProperty.all(Colors.grey[900]),
-                  ),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: Icon(
-                    Icons.view_array_outlined,
-                    color: Colors.grey[500],
-                  ),
-                ),
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(ss.width * .06),
+                    color: Colors.grey[900],
+            ),
+                    width: ss.width * .12,
+                height: ss.width * .12,
+                    child:
+                 IconButton(
+                   onPressed: (){},
+                   padding: EdgeInsets.all(ss.width*.02),
+                   splashRadius: ss.width * .2,
+                   icon: Icon(Icons.view_array_outlined,
+                       color: Colors.grey[500],
+                        size: ss.width*.06,
+                   ),
+
+                  )),
+
               ClipRRect(borderRadius: BorderRadius.circular(ss.width * .06),
               child:Image.asset("assets/images/profile_avatar.png",
                   width: ss.width*.12,
@@ -53,34 +59,46 @@ int coffee_type_chosen_idx=0;
               )
 
             ],)),
-
+                  Padding(padding: EdgeInsets.all(ss.width*.02),),
             Container(
-                height: ss.width * .18,
+                // height: ss.width * .18,
                 child:
             Text("Find your favorite coffee drinks",
-            style:TextStyle(fontSize: ss.width * .15))),
+            style:TextStyle(fontSize: ss.width * .11))),
 
-            Container(
-              padding: EdgeInsets.symmetric(vertical: ss.width*.03),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(ss.width * .05),
-              ),
-                width: ss.width * .88,
-                child:Row(children:[
+                  Padding(padding: EdgeInsets.all(ss.width*.02),),
+
+                Container(
+                    padding: EdgeInsets.all(ss.width*.02),
+                    width: ss.width*.8,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(ss.width * .08),
+                      color:Colors.grey[900],
+                    ),
+                    child:Row(children:[
                   Icon(Icons.search,
-                  size: ss.width * .045,),
-                  TextField(decoration: InputDecoration(
+                  size: ss.width * .045,
+                      color: Colors.grey[700]),
+                    Container(
+                        width: ss.width*.8,
+                  child:TextField(decoration: InputDecoration(
+                    fillColor: Colors.blueGrey[900],
                       border: InputBorder.none,
                       // labelText: 'Enter Name',
-                      hintText: 'Find Coffee'
-                  ),  )
+                      hintText: '  Find Coffee',
+                    hintStyle: TextStyle(color: Colors.grey[700])
+
+                  )),  )
                 ])
             ),
-
+          Container(
+              height: ss.width * .45,
+              child:
             ListView.builder(
                 scrollDirection: Axis.horizontal,
+                itemCount: coffee_types_list.length,
                 itemBuilder: (context, coffee_type_idx){
-                  Color itemtextcolor = Colors.grey[400]!;
+                  Color itemtextcolor = Colors.grey;
                   bool item_is_chosen = false;
                   if (coffee_type_chosen_idx == coffee_type_idx){
                     itemtextcolor = Colors.deepOrange;
@@ -90,7 +108,9 @@ int coffee_type_chosen_idx=0;
                   Container(
                       width: ss.width * .25,
                       height: ss.width * .15,
-                      child:Column(children:[
+                      child:Stack(
+                          // mainAxisSize: MainAxisSize.min,
+                          children:[
                     InkWell(
                         onTap:(){
                           setState(() {
@@ -100,19 +120,25 @@ int coffee_type_chosen_idx=0;
                         child:
                     Container(
                       width: ss.width * .25,
+                      height:ss.width * .15,
                       child:Center(child:
                       Text(coffee_types_list[coffee_type_idx],
                             style: TextStyle(color: itemtextcolor),
                       )))
                     ),
                       item_is_chosen ?
-                          Text(".",
-                          style: TextStyle(fontSize: ss.width*.5,
-                                            color: itemtextcolor),):
+                      Container(
+                      width: ss.width * .25,
+                  height:ss.width * .15,
+                  padding:EdgeInsets.only(top:ss.width*.08),
+                  child:Center(child:
+                          Text("•",
+                          style: TextStyle(fontSize: ss.width*.1,
+                                            color: itemtextcolor),))):
                       Container()
 
                       ]));
-            })
+            }))
 
 
 
